@@ -1,0 +1,19 @@
+.analyzer-container {
+  text-align: center;
+}
+
+label,
+textarea,
+.radio-container,
+.checkbox-container,
+button{
+  margin-top: 1em;
+}
+
+textarea {
+  width: 50%;
+}
+
+ul {
+  list-style: none;
+}

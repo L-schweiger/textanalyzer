@@ -1,0 +1,30 @@
+<div class="analyzer-container">
+  <form [formGroup]="textAnalyzerGroup" (ngSubmit)="analyzeText()" id="analyzer-form-group">
+    <div>
+      <label for="textInput">Enter a text to analyze</label><br>
+      <textarea formControlName="text" id="textInput" placeholder="Your text goes here..." rows="5"></textarea>
+    </div>
+
+    <div class="radio-container">
+      <ng-container *ngFor="let analysisMode of AnalysisModeEnum | keyvalue">
+        <input type="radio" [id]="'analysisMode-' + analysisMode.key" formControlName="analysisMode"
+               [value]="analysisMode.value"/>
+        <label [for]="'analysisMode-' + analysisMode.key">{{analysisMode.key}}</label>
+      </ng-container>
+    </div>
+
+    <div class="checkbox-container">
+      <input type="checkbox" formControlName="online" id="onlineCheckbox"/>
+      <label for="onlineCheckbox">Analyze online</label>
+    </div>
+
+    <button id="analyze-btn" type="submit" [disabled]="textAnalyzerGroup.invalid">Analyze</button>
+
+  </form>
+
+  <ul>
+    <li *ngFor="let resultSet of textAnalysisResult | keyvalue">
+      Letter {{resultSet.key}} appears {{resultSet.value}} times
+    </li>
+  </ul>
+</div>
